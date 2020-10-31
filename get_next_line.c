@@ -6,7 +6,7 @@
 /*   By: faubert <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/02/27 10:08:13 by faubert           #+#    #+#             */
-/*   Updated: 2020/10/30 17:26:04 by faubert          ###   ########.fr       */
+/*   Updated: 2020/10/31 13:43:36 by faubert          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -45,12 +45,12 @@ char		*ft_read(char *str, int fd)
 
 int			get_next_line(int fd, char **line)
 {
-	static char		*str[FOPEN_MAX];
+	static char		*str[OPEN_MAX];
 	char			*to_free;
 	size_t			i;
 
 	if (BUFFER_SIZE < 1 || BUFFER_SIZE > SSIZE_MAX - 1 || fd < 0
-	|| fd >= FOPEN_MAX || read(fd, str[fd], 0) < 0 || !line
+	|| fd >= OPEN_MAX || read(fd, str[fd], 0) < 0 || !line
 	|| ((str[fd] == NULL || ft_has_nl(str[fd]) == 0)
 	&& ((str[fd] = ft_read(str[fd], fd)) == NULL)))
 		return (-1);
